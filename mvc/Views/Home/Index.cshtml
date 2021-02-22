@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="lead">@ViewBag.Title</h2>
+
+<hr />
+<div class="row">
+    <div class="image-btn">
+        @Html.ActionLink("User Manage", "Index", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>User Manage</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Limited Access", "LAccess", "Guest", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Limited Access</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("All Access", "AAccess", "Guest", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>All Access</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Daily Tasks", "Index", "Home", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Daily Tasks</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Transaction Lookup ", "Index", "Transaction", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Transaction Lookup</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Totals", "Index", "Home", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Totals</label>
+    </div>
+</div>
+
+<style>
+    .row .image-btn {
+        display: inline-block;
+        padding: 30px;
+        width: 140px;
+        height: 140px;
+        vertical-align: middle;
+    }
+
+    .row label {
+        text-align: center;
+        width: 100%;
+        line-height: 20px;
+    }
+
+    .image-btn a {
+        text-decoration: none;
+        display: inline-block;
+        height: 79px;
+        width: 79px;
+        border: 1px solid green;
+        background-color: lightgrey;
+        text-align: center;
+        vertical-align: middle;
+        padding: 16px 0;
+        box-shadow: 2px 5px 5px grey;
+        border-radius: 20%;
+        color: transparent;
+        background-image: url("../images/female.png");
+        background-size: 100%;
+        opacity: .8;
+    }
+
+        .image-btn a:hover {
+            text-decoration: none;
+            background-color: #e6c3c3;
+            box-shadow: -2px -5px -5px grey;
+            opacity: 1;
+        }
+</style>

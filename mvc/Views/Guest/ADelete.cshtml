@@ -1,0 +1,153 @@
+﻿@model mvc.Models.Guests
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.guest_id)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[0]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstname)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[1]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[2]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthdate)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[3].Substring(0, ViewBag.guestlist[3].Length - 12)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.middlename)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[4]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.streetaddress)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[5]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[6]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[7]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.driverlicensenumber)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[8]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expirationdate)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[9].Substring(0, ViewBag.guestlist[3].Length - 12)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[10]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.height)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[11]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weight)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[12]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[14]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eyes)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[13]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emailaddress)
+        </dt>
+
+        <dd>
+            @ViewBag.guestlist[15]
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "/AADeleteView")
+        </div>
+    }
+</div>

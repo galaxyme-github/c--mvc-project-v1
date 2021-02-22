@@ -1,0 +1,67 @@
+﻿@model mvc.Models.Users
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Users</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            username
+        </dt>
+
+        <dd>
+            @ViewBag.userlist[1]
+        </dd>
+
+        <dt>
+            firstname
+        </dt>
+
+        <dd>
+            @ViewBag.userlist[2]
+        </dd>
+
+        <dt>
+            lastname
+        </dt>
+
+        <dd>
+            @ViewBag.userlist[3]
+        </dd>
+
+        <dt>
+            useremail
+        </dt>
+
+        <dd>
+            @ViewBag.userlist[5]
+        </dd>
+
+        <dt>
+            password
+        </dt>
+
+        <dd>
+            @ViewBag.userlist[4]
+        </dd>
+
+        <dt>
+            user level
+        </dt>
+
+        <dd>
+            @ViewBag.userlist[6]
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = ViewBag.userlist[0] }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

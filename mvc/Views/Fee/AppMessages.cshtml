@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "AppMessages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AppMessages</h2>
+
+<div class="row">
+    <div class="panel panel-default bootstrap-admin-no-table-panel">
+        <div class="panel-heading">
+            <div class="text-muted bootstrap-admin-box-title">@ViewBag.Title</div>
+        </div>
+        <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="monday">Message1</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="monday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="tuesday">Message2</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="tuesday" type="text" placeholder="message here">
+                        </div>
+                    </div><div class="form-group">
+                        <label class="col-lg-2 control-label" for="wednesday">Message3</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="wednesday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="thursday">Message4</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="thursday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="friday">Message5</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="friday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="saturday">Message6</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="saturday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="saturday">Message7</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="saturday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="saturday">Message8</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="saturday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="saturday">Message9</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="saturday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="saturday">Message10</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="saturday" type="text" placeholder="message here">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .form-horizontal {
+        padding: 30px;
+    }
+
+    input {
+        width: 100%;
+        margin: 0;
+    }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $("button[type='reset']").click(function (e) {
+                e.preventDefault();
+                window.location.href = "/Admin/Index";
+            });
+        });
+    </script>
+}

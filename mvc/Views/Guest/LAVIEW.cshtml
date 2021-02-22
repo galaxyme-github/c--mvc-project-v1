@@ -1,0 +1,95 @@
+﻿@model IEnumerable<mvc.Models.Guests>
+
+@{
+    ViewBag.Title = "LAVIEW";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LAVIEW</h2>
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="text-muted bootstrap-admin-box-title">Guests Table</div>
+            @Html.ActionLink("Add New User", "LCreate", "Guest", routeValues: null, htmlAttributes: new { @class = "btn create navbar-right" })
+        </div>
+        <div class="bootstrap-admin-panel-content">
+            <table id="example" class="table table-striped table-bordered dt-responsive nowrap" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Birth Date</th>
+                        <th>Street<br />Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Driver<br />Number</th>
+                        <th>Expiration<br />Date</th>
+                        <th>Sex</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Eyes</th>
+                        <th>Phone<br />Number</th>
+                        <th>Email<br />Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int index = 1; }
+                    @foreach (List<string> guest in ViewBag.alllists)
+                    {
+                        if (guest != null)
+                        {
+                            <tr>
+                                <td>@index</td>
+                                <td>@guest[1]</td>
+                                <td>@guest[4]</td>
+                                <td>@guest[2]</td>
+                                <td>@guest[3].Substring(0, guest[3].Length - 12)</td>
+                                <td>@guest[5]</td>
+                                <td>@guest[6]</td>
+                                <td>@guest[7]</td>
+                                <td>@guest[8]</td>
+                                <td>@guest[9].Substring(0, guest[9].Length - 12)</td>
+                                <td>@guest[10]</td>
+                                <td>@guest[11]</td>
+                                <td>@guest[12]</td>
+                                <td>@guest[13]</td>
+                                <td>@guest[14]</td>
+                                <td>@guest[15]</td>
+                            </tr>
+                        }
+                        index++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<style>
+    td a, a.create {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: green;
+    }
+
+        td a:hover, a.create:hover {
+            text-decoration: none;
+            background-color: darkgreen;
+            color: white;
+        }
+
+    .panel-heading {
+        position: relative;
+    }
+
+    a.create {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+    }
+</style>

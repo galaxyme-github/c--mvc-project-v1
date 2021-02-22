@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<div>
+    <pre>
+        Guest Check in App Description and requirements
+
+Visual Studio Enterprise project
+MVC coded with C#
+Database MySQL 8
+I would like the coding to contain notes describing what is happening within the code so another coder can read and understand the code if necessary. 
+This app should include a login page for the user along with an admin screen for adding, editing and deleting users.   The User Profile should include, Name, phone number, email address, user name and password.  The password should offer a way to reset the password if the user forgets.  
+
+Purpose of the App
+
+Our business is an event venue.  Guests use our venue for birthday parties, wedding parties, and many other occasions.   Our venue needs an automated way to check in the guest when they arrive and store their information in a database for future reference.   This app will perform several checks to see if the guests is a valid guest then prompt the guest to agree to the TOS.  upon checking the TOS box, a pdf will be generated using the submitted guest’s information along with a stored pdf containing a user agreement at which time the app will require the guest to sign the agreement.   The guest signature will be stored for later reference if needed.   I will explain in detail what the requirements are for the complete app.  There are different “levels” of guests and also status of guests that will be implemented in the database.   The fee to use the venue will also be processed by the app to let the user know how much USD to charge the guest to enter the venue.
+
+ Database field names and descriptions
+
+User=This is the person that uses the app to check in a guest.  Once a User is logged in, they should stay logged in until the manually log out for a maximum of 12 hours.   
+UserLevel= There are 3 user levels.  level 1, level 2 and level Admin.   Level 1 user only has access to check in a guest.  Level 2 can checkin AND edit/delete a guest.   Admin has ALL functions of the app.
+Guest= Customer that is entering the venue for a party or event.
+Venue=Building that is rented to guest for special occasion
+
+
+GuestInfo= Guest’s information posted to database using the following text field names separated   by commas. BirthDate,FirstName,MiddleName,LastName,StreetAddress,City,State,DriverLicenseNumber,ExpirationDate,Sex,Height,Weight,Eyes,PhoneNumber,EmailAddress  
+AllAccessGuestInfo= All Access Guest’s information posted to database using the following text field names separate by commas. BirthDate,FirstName,MiddleName,LastName,StreetAddress,City,State,DriverLicenseNumber,ExpirationDate,Sex,Height,Weight,Eyes,PhoneNumber,EmailAddress, StageName  
+GuestID =The First letter of FirstName and the First letter of LastName concatenated with the last four digits of the Guest’s DriverLicenseNumber      example:   Thomas Jones with driver License Number K00-27-5643 would be GuestID=TJ5643.           
+ LoyaltyPointNumber = AllAccess Guests receive a point each time they attend the venue.  these points accumulate for one week  beginning Sunday and ending on Saturday.  The loyalty point number resets to zero after Saturday.                                             
+PartytDate= The day the Guest checks in to the Venue
+PartyHistory= This is will be a record of all the PartyDates the guest attended the venue. When displayed or printed, it will show the Date and time a Guest checked in to the Venue. 
+EventFee=The amount in USD the Guest will pay to enter the Venue.  This amount will be calculated by the app.  
+VipEventFee=The amount in USD the Guest will pay to enter the Venue.  this amount bill stored in the Edit AllAccessGuest and the Edit LimitedAccessGuest page.  
+TOS=This is the Terms of Service that will be Stored on the server in pdf form
+After7Fee=Fee charged to guest in USD for defined in Admin Page
+AFter8Fee= Fee charged to guest in USD defined in Admin Page
+GuestAgreement=This is the agreement the guest will sign when checking in to the venue.  venue. The agreement will be stored on the server in pdf form.  When printed or displayed, the agreement will be populated with the GuestID, PartyDate, EventFee, GuestSignature  and the name of the User that checked them in.  
+GuestStanding=Good, Bad, and Vip The default for a new guest will be Good.
+GuestStatus=LimitedAccess, AllAccess.  The default GuestStatus will be LimitedAccess    when checking in a new guest.
+AccessDenied= a guest tried to enter the venue but was denied access to the club. 
+TermsRejected= a guest refused to accept the TOS and did not enter the venue
+Birthdate= Guest Date of Birth.     Month/day/year   format
+FirstName Guest First Name
+LastName= Guest Last Name
+StreetAddress-Guest Street Address
+City= Guest City
+State=Guest State
+DriverLicenseNumber=Guest Driver License Number
+Expiration Date=Month/Date/Year format
+Sex= M or F
+Height= Inches format   
+Weight=pounds format
+Eyes= eye color
+PhoneNumber=xxx-xxx-xxxx
+EmailAddress= email address format
+StageName =Nick Name chosen by All Access Guest
+LoyaltyPoints=Weekly total of points earned by AllAccessGuest
+EarlyBirdDiscount=Amount in USD discounted from EntryFee defined in Admin Page
+AllAccessGuestAge=Age of guest calculated by app using Birthdate string and Today’s date
+LimitedAccessGuestAge=Age of guest calculated by app using Birthdate string and Today’s date
+
+
+Detailed App operation and Function
+
+When a user loads the app, a login screen will appear asking the user to login.  upon logging in, a home screen will appear with the icons that are necessary for the user to use the app.   The icons will be labeled as follows:  Users,  LimitedAccess,  AllAccess, Daily Tasks, Transaction Lookup, Totals.   
+
+When a guest approaches the user, the user will determine if the guest is LimitedAccess or AllAccess and click the appropriate icon.  
+
+LimitedAccess Guest
+ if the user clicked LimitedAccess, a new screen with the following blue male icons will appear labeled as follows:   
+ CheckIn Guest, Edit Guest, Delete Guest, Early Event Fee, Late Event Fee, Current LimitedAccess Guests.   
+If the user clicks Checkin Guest, a new screen will appear with a text field box in the center of the screen.   
+
+The cursor will be inside the box ready for the user to input the GUESTINFO in CSV format.   Above the box will be the text “Check in Limited Access Guest” under the box will be the message, “To check in a guest manually, click HERE” HERE will be a link that opens a new screen that contains a form for the user to manually enter the GUESTINFO by field.    Each field should be labeled as follows,    
+Birthdate
+First Name
+Last Name
+Street Address
+City
+State
+Driver License Number
+Expiration Date
+Sex
+Height
+Weight
+Eyes
+Phone Number
+Email address.   
+
+Under the Form, there should be a submit box labeled “Check in Guest”
+The form should be validated.  Street address, city, Expiration Date, Height, phone number, and email address can be null.  All other fields are required.  
+
+After User hits Submit, the app will process the guest info and run through a series of filters
+
+FILTERS
+
+App will check the age of Guest
+App will calculate the LimitedAccessGuestAge based on the BirthDate field and Today’s time and Date.
+If the guest is Under 18, the Guest info will post to the database and a flag in the AccessDenied Field.  A message should be prompted to the User as follows “The guest is Denied Entry because the guest is Under 18 years of age.  Click HERE to check in another guest” HERE will be a link back to the Check in Guest page.  
+If the guest is over 17 but under 21, the app will flag the Under21 field. Then continue the next filter.
+App will check Standing of Guest
+If the standing of a guest is “good" or “Vip”, continue checking in the guest.
+If the standing of a guest is “bad” flag the AccessDenied Field and display the message “This guest is not on the Guest List.  Contact Management if there are any questions”.     “click HERE to check in another guest” HERE should be a link back to the Check in Guest Page.  
+
+App will check PartyHistory of Guest
+If the Guest PartyHistory = null, the app will record the today’s PartyDate in the PartyHistory field and proceed to check in the guest.  
+If the Guest PartyHistory contains one or more Party Dates, the app will record the new date in the party history.  the new PartyDate does NOT replace the existing date.  the new date must be added to the Party History.  the PartyHistory will never reset.  It will be a forever running list of dates. 
+App will Calculate EventFee of Guest
+If today is Sunday, EventFee=SundayFee     SundayFee will be Defined in Admin page
+If today is Monday, EventFee=MondayFee     MondayFee will be Defined in Admin page
+If today is Tuesday, EventFee=TuesdayFee   TuesdayFee will be Defined in Admin page
+If today is Wednesday, EventFee=WednesdayFee    WednesdayFee will be Defined in Admin Page
+If today is Thursday, EventFee=ThursdayFee     ThursdayFee will be Defined in Admin Page
+If today is Friday, EventFee=FridayFee    FridayFee will be Defined in Admin Page
+If today is Saturday, EventFee=SaturdayFee    SaturdayFee will be Defined in Admin Page
+If SpecialEventFee is not zero or null, EventFee=SpecialEventFee     SpecialEventFee will be Defined in Admin Page
+If LimitedAccess guest checks in Before 9pm EventFee=EventFee minus EarlyBirdDiscount   EarlybirdDiscount will be defined in Admin Page.
+
+After all of the filters are completed and the GuestInfo is Posted to the Database, a new screen should appear with the following message:
+“Welcome to the OH Venue, the fee to use the club for your occasion tonight is $”, EVENTFEE, 
+
+The TOS should appear in a scrolling box 400x200   with a check box.  The checkbox should be checked by default.    Guest should un check if they do not agree.
+The GuestAgreement should also appear in a separate scrolling box about 400 x 200 under the TOS box.
+
+Under the GuestAgreement, there should be a message as follows "By entering these premises, I am agreeing to the TOS and the GuestAgreement both of which appear above.   I also agree to the Facility Use fee of, $” EventFee    
+
+There should be a signature box under those statements.  after guests signs the box, there should be a submit button labeled AGREE.   upon submission, all data including captured signature should be posted and the screen should go back to the Check in Guest Page where user can check in the next guest. 
+
+Under the submit button, there should be another button labeled DON”T  AGREE.  upon submission of this button,  the data should post along with a flag in the TermsRejected Field. Then return to the Check in Guest Page 
+
+
+AllAccess Guest
+   
+if the user clicked AllAccess, a new screen with the following pink female icons will appear labeled as follows:    Point Number Checkin, Add New Guest, Edit Guest, Delete Guest, Early Event Fee, Late Event Fee, Current AllAccess Guests.     
+If the user clicks Add New Guest, a new screen will appear with a text field box in the center of the screen.   The cursor will be inside the box ready for the user to input the GUESTINFO in CSV format.   Above the box will be the text “Add New All Access Guest” under the box will be the message, “To Add guest manually, click HERE.”   HERE will be a link that opens a new screen that contains a form for the user to manually enter the AllAccessGuestInfo by field.    Each field should be labeled as follows,  
+This Text will appear above the Form “Add All Access Guest Form “ 
+Birthdate
+FirstName
+LastName
+StreetAddress
+City
+State
+DriverLicenseNumber
+ExpirationDate
+Sex
+Height
+Weight
+Eyes
+Phone Number
+EmailAddress.
+StageName   
+
+Under the Form, there should be a submit box labeled “Add All Access Guest”
+The form should be validated.  Street address, city, Expiration Date, Height, phone number, and email address can be null.  All other fields are required.  After User hits Submit, the app will process the guest info and run through a series of filters.   skip to FILTERS paragraph below.
+If user clicks Point Number Check in, the App will prompt an alert for the user to enter the loyalty point number for the All Access guest with a submit button labeled Submit.  
+upon Submission, the app will continue  processing the filters using the GuestInfo corresponding to the LoyaltyPointNumber submitted by the user.  
+
+FILTERS
+
+App will check the age of Guest
+
+App will calculate the AllAccessGuestAge based on the BirthDate field and Today’s time and Date.  
+If the guest is Under 18, the Guest info will post to the database and a flag in the AccessDenied Field.  A message should be prompted to the User as follows “The guest is Denied Entry because the guest is Under 18 years of age.  Click HERE to check in another guest” HERE will be a link back to the Check in Guest page.  
+If the guest is over 17 but under 21, the app will flag the Under21 field. Then continue the next filter.
+App will check Standing of Guest
+If the standing of a guest is “good” or “Vip”, continue checking in the guest.
+If the standing of a guest is “bad” flag the AccessDenied Field and display the message “This guest is not on the Guest List.  Contact Management if there are any questions”.     “click HERE to check in another guest” HERE should be a link back to the Check in Guest Page.  
+
+App will check PartyHistory of Guest
+If the Guest PartyHistory = null, the app will record the today’s PartyDate in the PartyHistory field and proceed to check in the guest.  
+If the Guest PartyHistory contains one or more Party Dates, the app will record the new date in the party history.  the new PartyDate does NOT replace the existing date.  the new date must be added to the Party History.  the PartyHistory will never reset.  It will be a forever running list of dates. 
+
+App will Calculate the number of points An All Access Guest Has Earned for the week
+WeeklyLoyaltyPoints=WeeklyLoyaltyPoints Plus DailyPoint.   DailyPoint will be defined in Admin Page
+WeeklyLoyaltyPoints reset to zero aver Sunday morning at 6am.
+ 
+
+App will then Calculate the EventFee for guest to pay to use the Venue.
+If AllAccessGuest checks in before 7pm  then EventFee=DailyFee minus After8Fee    DailyFee and After8Fee will be defined in Admin page
+If AllAcessGuest checks in after 7pm but before 8pm, then EventFee=DailyFee minus After7Fee    DailyFee and After7Fee will be defined in Admin page
+
+If AllAccessGuest checks in after 8pm, then EventFee=DailyFee   DailyFee will be defined in Admin Page
+If AllAccessGuest checks in after 9pm then alert should pop up to ask user amount of EventFee and a text box prompting the name of staff member that approved the AllAccessGuest checking in after 9pm
+If AllAccessGuest Standing=”Vip” then EventFee=VipEventFee        VipEventFee will be defined in Edit AllAccessGuest Page
+
+After all of the filters are completed and the GuestInfo and PartyDate is Posted to the Database, a new screen should appear with the following message:
+
+“Welcome to the OH Venue” StageName “.” “  “   StageName “ is”  fee to use the club for your occasion tonight is $” EventFee, 
+
+The TOS should appear in a scrolling box 400x200   with a check box.  The checkbox should be checked by default.    Guest should un check if they do not agree.
+The GuestAgreement should also appear in a separate scrolling box about 400 x 200 under the TOS box.
+
+
+Under the GuestAgreement, there should be a message as follows "By entering these premises, I am agreeing to the TOS and the GuestAgreement both of which appear above.   I also agree to the Facility Use fee of, $” EventFee    
+
+There should be a signature box under those statements.  after guests signs the box, there should be a submit button labeled AGREE.   upon submission, all data including captured signature should be posted and the screen should go back to the Check in Guest Page where user can check in the next guest. 
+
+Under the submit button, there should be another button labeled DON” T AGREE.  upon submission of this button, the data should post along with a flag in the TermsRejected Field. Then return to the Check in Guest Page 
+
+
+
+
+    </pre>
+</div>

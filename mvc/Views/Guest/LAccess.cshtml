@@ -1,0 +1,78 @@
+﻿@model mvc.Models.LAcceess
+
+@{
+    ViewBag.Title = "LAccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LAccess</h2>
+
+
+
+<div class="row">
+    <div class="image-btn">
+        @Html.ActionLink("CheckIn Guest", "CheckIn", "Guest", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>CheckIn Guest</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Edit Guest", "LAEditView", "Guest", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Edit Guest</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Delete Guest", "LADeleteView", "Guest", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Delete Guest</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Early Event Fee", "EarlyEventFee", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Early Event Fee</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Late Event Fee", "LateEventFee", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Late Event Fee</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Current LAGuests", "LAVIEW", "Guest", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Current LAGuests</label>
+    </div>
+</div>
+
+<style>
+    .row .image-btn {
+        display: inline-block;
+        padding: 30px;
+        width: 140px;
+        height: 140px;
+        vertical-align: middle;
+    }
+
+    .row label {
+        text-align: center;
+        width: 100%;
+        line-height: 20px;
+    }
+
+    .image-btn a {
+        text-decoration: none;
+        display: inline-block;
+        height: 79px;
+        width: 79px;
+        border: 1px solid green;
+        background-color: lightgrey;
+        text-align: center;
+        vertical-align: middle;
+        padding: 16px 0;
+        box-shadow: 2px 5px 5px grey;
+        border-radius: 20%;
+        color: transparent;
+        background-image: url("../images/female.png");
+        background-size: 100%;
+        opacity: .8;
+    }
+
+        .image-btn a:hover {
+            text-decoration: none;
+            background-color: #e6c3c3;
+            box-shadow: -2px -5px -5px grey;
+            opacity: 1;
+        }
+</style>

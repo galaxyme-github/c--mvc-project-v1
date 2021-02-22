@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>About</h2>
+<div>
+    <pre>
+        Home Screen   (after Login)
+
+Logout- Red Logout button that will log out the User
+Admin tools-only accessible to Admin level users when clicked, new screen appears with the following Icons
+Users- once clicked, new window opens with the following Icons
+Add User- when clicked new screen appears to add new user
+The following form will appear with the following fields
+User Login Name
+User Password (anything) Security not an issue)
+User First Name
+User Last Name
+User Access Level  ( dropdown level 1, 2,Admin)
+Edit User-when clicked new screen appears to edit user
+Delete User-when clicked new screen appears to delete user
+Event Fee-When clicked, a form will be displayed with inputs for Sunday, monday, Tuesday, Wednesday, Thursday, Friday and Saturday. 
+User will be required to enter the EventFee for each of those days
+AAEvent Fee-When clicked, a form will be displayed with inputs for Sunday, monday, Tuesday, Wednesday, Thursday, Friday and Saturday.  
+User will be required to enter the EventFee for each of those days
+EarlyEventFee-When clicked a form will be displayed to ask the user  the smount of the early event fee in USD.
+LateEventFee When clicked a form will be displayed to ask the user to enter the amount of the 	Late event fee in USD.
+EarlyBirdSpecial- When clicked, a form will be displayed to ask the user to enter the time at which the early bird special ends.
+AppMessages- When clicked, the app will prompt the user to enter messages displayed by the 	app for the following :
+This section not yet defined.  I would like to have some of the error messages displayed by the app to be stored here so the user can easily edit them.   
+a function name can be called when the message is called to be displayed.  
+Random Filters-  I don’t have any yet, but I would like the app to call this section(function) when processing the filters to see if there is a filter that has been added for the app to check when processing..
+Example.  in this section, I code a function to check the first name of a guest and if it’s equal to Randy, then something 	happens based 	on what I assign.   if this does not make sense, we can add that on later.  
+Just wanted you to think about how this could work.  
+Home- Returns to Home Screen
+
+Transaction Lookup-Only accessible to Level 2 and Admin.  New screen appears with the title “Display transaction”.   today’s date by default will appear with Month, day , and year.  
+Each being a separate dropdown . example.  Today is 1/21/2020. user can click the 1 and a dropdown allows user to change the month to the month they want to lookup.  
+user clicks 21, a dropdown allows user to select between 1 and 31.  the user clicks year, the dropdown allows user to click  the current year and all passed years the app was in service.    
+Once the proper date appears in the dropdowns, the user then clicks a submit button labeled “display” transaction.   A new window will appear and show all of the transactions for The day month and year selected in the dropdown.     
+The information to be displayed will be for all guests that checked in on the date selected by the user from the dropdown menu and will appear on  a new page as follows:
+The information will be displayed in order of checkin Time with the earliest time first:
+The list will begin with AllAccess guests first
+StageName,  checkin time, checkin date
+Amount Paid to use the club in USD. (StageName will also be a blue link that when clicked will open the Edit Guest Page for that guest.)
+After the AllAccess guests are displayed, the list will continue with the LimitedAccess guests.
+FirstName, LastName (FirstName will be a blue link. When clicked it will open the Edit Guest Page for that guest)
+Checkin Time and Date
+Amount Paid to use the club in USD
+After the LimitedAccess guests are diplayed the following totals will be calculated and displayed 	at the bottom of the list.
+“Total Number of All Access Guests: “ (the total number displayed)
+“Total Limited Access Guests:  “ (Total number displayed)
+“Total All Access Fees Collected for today: $”  (Total AAEventFee for today)
+“Total Limted Access Fees Collected for today: $ “ (total EventFee for today)
+“Total Event Fees collected for today:  $” (AllAccess event fee plus LimitedAccess Eventfee)
+
+AllAccess Guest- Clicking this will open new screen with the following icons (the first requirements I sent you may conflict with the following. Please use THIS version here)
+Add Guest- All User Levels Allowed.   This will add AllAccess guest to database.  Please perform a 	check to see if the guest is already in the database and proceed accordingly.  
+check filters to 	make sure guest is in good standing and continue to calculate event fees and proceed to the 	filters and display the following :  StageName, “ is” GuestAge “ years old. “ StageName, “is currently on the guest list.  
+The fee for “ StageName” to use the club today is “AAEventFee”.  Is this fee agreeable?” there should be 3 links, yes, no and override.  
+ if yes is clicked, the app will proceed to the terms of service and agreement page awaiting guest 	signature and submission of AGREE button. TOS box should be preselected as checked by  default.    
+after submission, the app should display the following message  StageName” has been sucessfully checked in to The Venue and $”AAEventFee” has been collected by “user”. 
+If the guest was checked in mistakenly or guest changed their mind, click here” App will change the AAEventFee 	collected to zero.  
+App will leave guest in database but flag the TermsRejected field in the Guest file to reflect the guest did not enter the venue.  (I would like to add a comment box that the user can input a reason the guest did not want to enter and store in the guest file to view in their PartyHistory..
+  Any ideas how to 	do that?)
+
+If No is clicked, the app will display the message “ Thank you for considering us for your 	Event, “StageName”  We hope to earn your business next time”  the app will  record the 	attempted checkin in the PartyHistory of the guest with the TermsRejected field flagged to reflect the Guest did not enter the Venue.   
+( I would like to add a comment box that 	the user can input a reason the guest did not want to enter and store in the guest file to 	view in their PartyHistory..  Any ideas how to do that?)
+
+If Override is clicked, the app will pop up a box for the User to manually change the 	AAEventFee to a new Amount. A comment box should appear for the user to add the reason that the event fee was changed.  
+This reason should be stored in the database so 	I can see the reason printed when I click transaction history.    
+After the override of the 	event fee is complete and a reason for the override was stated, the app should  display the following message  StageName” has been sucessfully  checked in to The Venue and $”AAEventFee” has been collected by “user”.
+ If the guest was checked in mistakenly or 	guest changed their mind, click here” App will change the AAEventFee collected to zero. App will leave guest in database but flag the TermsRejected field in the Guest file to reflect the guest did not enter the venue.  
+( I would like to add a comment box that the user can input a reason the guest did not want to enter and store in the guest file to view in their PartyHistory..  Any ideas how to do that?)
+
+Checkin guest  with GuestID- All User Levels Allowed. This is a shortcut for the user to checkin an AllAccess guest using only there GuestID.  when clicked a box will appear asking the user for the All Access Guest’s GuestId number.  
+ The user will then input the number and click submit.  	
+The app will  check the database for the GuestID number.   
+if the GuestID number does not exist, the app will display the message  “Guest ID number “GuestID” is not in the system.  please Add Guest to proceed” The user will then click a submit box that will take him to the add Guest page.   
+If the GuestID number is found, the app will add the new PartyDate to the PartyHistory 	of the guest and proceed as follows: 	
+If the Terms of Service or the Guest agreement have changed since the Guest was added to the guest list, then the app will proceed exactly like the ADD GUEST Page explained above
+If the Terms of Service or the Guest agreement have NOT changed then the app will proceed like the ADD GUEST page  except  the app will bypass the requirement for the guest to agree to the TOS, agreement and provide signature. 	
+ 
+Edit Guest=Amin or level 2 accessible only.  Clicking Edit Guest will display a form populated 	with  GuestInfo  of the guest.  This form should be Editable by the user.
+After the last form entry, there should be a selector box where the user can select the standing 	of the guest.   Good standing is default.   The user should be able to select Bad Standing if the 	guest is in Bad standing
+Another Selector should follow the standing selector.  This selector will be the status of the 	guest.  All Access will be the default. clicking the  selector box will allow the user to select VIPACCESS for the status of the guest.   
+If VIPACCESS is selected, the app will supply another drop down with all 7 days of the 	week listed in a form.  The user will then be required to enter the amount of the AAEventFee for each of the 7 days.  
+The App will then use these amounts to calculate the AAEventFee for this guest.  
+A link should also appear on the Edit Guest Page.  This Link will be labeled PartyHistory.  When 	the user clicks this link, a new screen will appear and display a list of all the PartyDates, the guest attended the venue. The Party Date and the time they checked in should be displayed.  	
+The Party Date should be a blue link.  When clicking the link, a new screen should pop up 	and populate from the database the following 
+“on this day, “PartyDate,
+“I, “FirstName, Lastname” agree to “GuestAgreement
+
+“I have paid $”AAEventFee” for the use of the venue for my event.”
+“The execution of this agreement has been witnessed by:  “User on this Date “PartyDate
+
+Delete Guest – Admin level accessible only.  Delete Guest from Database
+Search Guest-  Admin level only.  AllAccess Searchable by guest by first name, last name, city, state, age range, Stage Name or List ALL 
+ Display by stageName in Alphabetical order.  When there are identical stage names, display in the order of most recent party date first and oldest PartyDate Last.
+Make each First and Last name a blue link that when clicked will return the EDIT guest 	page for this guest.
+
+LimitedAccess Guest- Clicking this will open new screen with the following icons (the first requirements I sent you may conflict with the following. Please use THIS version here)
+Add Guest- All User Levels Allowed.   This will add LimitedAccess guests to database.  Please 	perform a check to see if the guest is already in the database and proceed accordingly.  
+check 	filters to make sure guest is in good standing and continue to calculate event fees and proceed to the filters and display the following : 
+ FirstName, “ is” GuestAge “ years old. “ FirstName, “is currently on the guest list. 
+ The fee for “ FirstName” to use the Venue today is “EventFee”.  Is 	this fee agreeable?”   there should be 3 links, yes, no and override.  
+ if yes is clicked, the app will proceed to the terms of service and agreement page 	awaiting guest 	signature and submission of AGREE button. TOS box should be preselected as checked by default.  
+after submission, the app should display the following message  ‘’FirstName” has been sucessfully  checked in to The Venue and 	$”EventFee” has been collected by “user”. 
+If the guest 	was checked in 	mistakenly or 	guest changed their mind, click here” App will change the EventFee collected to zero.  	
+App will leave guest in database but flag the TermsRejected field in the Guest file to 	reflect the guest did not enter the venue.  
+(I would like to add a 	comment box that the user can input a reason the guest did not want to enter and store in the guest file to view in their PartyHistory. Any ideas how to do that?)
+
+If No is clicked, the app will display the message “Thank you for considering us for your Event, “FirstName”  We hope to earn your business next time”  the app will  record the attempted checkin in the PartyHistory of the guest with the TermsRejected field flagged to reflect the Guest did not enter the Venue.   
+(I would like to add a comment box that the user can input a reason the guest did not want to enter and store in the guest file to 	view in their PartyHistory..  Any ideas how to do that?)
+
+If Override is clicked, the app will pop up a box for the User to manually change the EventFee to a new Amount. A comment box should appear for the user to add the reason that the event fee was changed.  
+This reason should be stored in the database so I can see the reason printed when I click transaction history. After the override of the event fee is complete and a reason for the override was stated, the app should  display 	the following message  
+FirstName” has been successfully  checked in to The Venue and 	$”EventFee” has been collected by “user”. If the guest was checked in mistakenly or guest changed their mind, click here” App will change the EventFee collected to zero.  
+	App will leave guest in database but flag the TermsRejected field in the Guest file to reflect the guest did not enter the venue.  
+(I would like to add a comment box that the user can input a reason the guest did not want to enter and store in the guest file to 	view in their PartyHistory..  Any ideas how to do that?)
+
+Checkin guest  with GuestID- All User Levels Allowed. This is a shortcut for the user to checkin an AllAccess guest using only there GuestID. when clicked a box will appear asking the user for the All Access Guest’s GuestId number.  
+ The user will then input the number and click submit. The app will  check the database for the GuestID numbre.   
+if the GuestID number does not exist, the app will display the message  “Guest ID 	number “GuestID” is not in the system.  please Add Guest to proceed” The user will then click a submit 	box that will take him to the add Guest page.   
+If the GuestID number is found, the app will add the new PartyDate to the PartyHistory 	of the guest and proceed as follows: 	
+If the Terms of Service or the Guest agreement have changed since the Guest was added to the guest list, then the app will proceed exactly like the ADD GUEST Page explained above
+If the Terms of Service or the Guest agreement have NOT changed then the app will proceed like the ADD GUEST page  except  the app will bypass the 	requirement for the guest to agree to the TOS, agreement and provide signature.   	
+ 
+Edit Guest=Amin or level 2 accessible only. Clicking Edit Guest will display a form populated 	with  GuestInfo  of the guest.  This form should be Editable by the user.
+After the last form entry, there should be a selector box where the user can select the standing of the guest. Good standing is default.   The user should be able to select Bad Standing if the 	guest is in Bad standing
+Another Selector should follow the standing selector.  This selector will be the status of the 	guest.  Limited Access will be the default. clicking the selector box will allow the user to select 	VIPACCESS for the status of the guest.   
+If VIPACCESS is selected, the app will supply another drop down with all 7 days of the 	week listed in a form.  The user will then be required to enter the amount of the EventFee for each of the 7 days.  The App will then use these amounts to calculate the 	EventFee for this guest.  
+A link should also appear on the Edit Guest Page.  This Link will be labeled PartyHistory.  When 	the user clicks this link, a new screen will appear and display a list of all the PartyDates, the 	guest attended the venue.   
+The Party Date and the time they checked in should be displayed. The Party Date should be a blue link.  When clicking the link, a new screen should pop up 	and populate from the database the following 
+“on this day, “PartyDate,
+“I, “FirstName, Lastname” agree to “GuestAgreement
+
+“I have paid $”EventFee” for the use of the venue for my event.”
+“The execution of this agreement has been witnessed by:  “User on this Date “PartyDate
+
+  Delete Guest – Admin level accessible only.  Delete Guest from Database
+ Search Guest-  Admin level only.  Search guest by first name, last name, city, state, Age range, or List ALL LimitedAccess Guest in Database
+ Display by LastName, FirstName in Alphabetical order.  When there are identical Last names, display in the order of most recent party date first and oldest Partydate Last.
+Make each First and Last name a blue link that when clicked will return the EDIT guest 	page for this guest.
+
+Chatting here!
+
+when the TOS is first presented, there will be a checkbox for the Guest to accept when checking in. This box should already be checked so the guest does not have to do it.
+the next question, about early and late fee. I will have to figure out how to explain that one. I will try here now. there is a different fee for the event based on the time the guest enters. 
+the latefee will the fee we charge after 9pm the early fee will be the fee we charge if the guest enters before 9pm
+next question about logout. that is the logout for the user. if my employee needs to log out of the app.
+
+the users icon is the icon to click to add or delete users of the app. The users are my employees. they will login to the app to use the app to check in the guest.
+ 
+stageName is a string that the user will enter for the allaccessGuest when they check in for the first time
+I will have to try to see how I can word it to make sense for dailypoint and after8fee I will work on this now and reply you soon
+don't worry about doing anything with the dailypoint or the after8fee. after the app in working, I will pay you to do some updates and one of the updates will be implementation of the dailypoint and the after8fee.
+
+The stageName is important. when a new allaccess guest is checked in, there needs to be a place where the user is prompted to enter a stagename for the guest and store this stagename in the database. with the guestinfo
+
+    </pre>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

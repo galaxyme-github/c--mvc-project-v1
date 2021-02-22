@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Transaction Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="panel panel-default bootstrap-admin-no-table-panel">
+        <div class="panel-heading">
+            <div class="text-muted bootstrap-admin-box-title">@ViewBag.Title</div>
+        </div>
+        <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
+            <form class="form-horizontal" action="/Transaction/DisplayTransaction?">
+                <fieldset>
+                    <div class="form-group default">
+                        <label class="col-lg-1 control-label" for="day">Day</label>
+                        <div class="col-lg-3">
+                            <select id="day" class="form-control">
+                                @for (var i = 1; i <= 31; i++)
+                                {
+                                    if (i == DateTime.Now.Day)
+                                    {
+                                        <option value="@i" selected>@i</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <label class="col-lg-1 control-label" for="month">Month</label>
+                        <div class="col-lg-3">
+                            <select id="month" class="form-control">
+                                @for (var i = 1; i <= 12; i++)
+                                {
+                                    if (i == DateTime.Now.Month)
+                                    {
+                                        <option value="@i" selected>@i</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <label class="col-lg-1 control-label" for="year">Year</label>
+                        <div class="col-lg-3">
+                            <select id="year" class="form-control">
+                                @for (var i = DateTime.Now.Year - 30; i <= DateTime.Now.Year; i++)
+                                {
+                                    if (i == DateTime.Now.Year)
+                                    {
+                                        <option value="@i" selected>@i</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary">Display transaction</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-horizontal {
+        padding: 30px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .textarea-wysihtml5 {
+        min-width: 100%;
+        max-width: 100%;
+    }
+</style>
+
+@Scripts.Render("~/bundles/vendors")
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {            
+            $("button").click(function (e) {
+                e.preventDefault();
+                window.location.href = $("form").attr("action") + "day=" + $('#day').val() + "&month=" + $('#month').val() + "&year=" + $('#year').val();
+            });
+        });
+    </script>
+}

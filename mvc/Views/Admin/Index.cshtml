@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin Tools Page</h2>
+
+<div class="row">
+    <div class="image-btn">
+        @Html.ActionLink("User Manage", "Index", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>User Manage</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Event Fee", "EventFee", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Event Fee</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("AAEvent Fee", "AAEventFee", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>AAEvent Fee</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Early EventFee", "EarlyEventFee", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Early EventFee</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("Late EventFee ", "LateEventFee", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>Late EventFee </label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("EarlyBird Special", "EarlyBirdSpecial", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>EarlyBird Special</label>
+    </div>
+    <div class="image-btn">
+        @Html.ActionLink("App Messages", "AppMessages", "Fee", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        <label>App Messages</label>
+    </div>
+</div>
+
+<style>
+    .row .image-btn {
+        display: inline-block;
+        padding: 30px;
+        width: 140px;
+        height: 140px;
+        vertical-align: middle;
+        background-size: 100%;
+    }
+    .row label {
+        text-align: center;
+        width: 100%;
+        line-height: 20px;
+    }
+    .image-btn a {
+        text-decoration: none;
+        display: inline-block;
+        height: 79px;
+        width: 79px;
+        border: 1px solid green;
+        background-color: lightgrey;
+        text-align: center;
+        vertical-align: middle;
+        padding: 16px 0;
+        box-shadow: 2px 5px 5px grey;
+        border-radius: 20%;
+        color: transparent;
+        background-image: url("../images/male.png");
+        background-size: 100%;
+        opacity: .8;
+    }
+    .image-btn a:hover {
+        text-decoration: none;
+        background-color: #e6c3c3;
+        box-shadow: -2px -5px -5px grey;
+        opacity: 1;
+    }
+</style>

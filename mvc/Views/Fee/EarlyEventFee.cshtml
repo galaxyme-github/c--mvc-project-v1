@@ -1,0 +1,58 @@
+﻿@model mvc.Models.EarlyFee
+
+@{
+    ViewBag.Title = "EarlyEventFee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EarlyEventFee</h2>
+
+<div class="row">
+    <div class="panel panel-default bootstrap-admin-no-table-panel">
+        <div class="panel-heading">
+            <div class="text-muted bootstrap-admin-box-title">@ViewBag.Title</div>
+        </div>
+        <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in form-horizontal">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+                <h4>How much is the amount of the early event fee in USD?</h4>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-lg-6 control-label" for="lateeventfee">The amount of the early event fee (USD)</label>
+                        <div class="col-lg-6">
+                            @Html.EditorFor(model => model.early_fee, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.early_fee, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $("button[type='reset']").click(function (e) {
+                e.preventDefault();
+                window.location.href = "/Admin/Index";
+            });
+        });
+    </script>
+}
+<style>
+    .form-horizontal {
+        padding: 30px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+</style>
